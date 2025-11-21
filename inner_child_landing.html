@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inner Child.ed - Make Impact For Future Generation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.2rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e3a8a;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #334155;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #06b6d4;
+        }
+
+        .login-btn {
+            background: linear-gradient(135deg, #06b6d4, #0891b2);
+            color: white;
+            padding: 0.7rem 1.8rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+            padding: 8rem 5% 4rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .hero-content {
+            flex: 1;
+            max-width: 550px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            color: #1e3a8a;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            color: #475569;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 20px;
+        }
+
+        /* About Section */
+        .about {
+            padding: 6rem 5%;
+            background: #f8fafc;
+            text-align: center;
+        }
+
+        .section-title {
+            color: #06b6d4;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .about h2 {
+            font-size: 2.5rem;
+            color: #1e3a8a;
+            margin-bottom: 3rem;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .about-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s;
+        }
+
+        .about-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .about-card img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .learn-more-btn {
+            background: #06b6d4;
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 25px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 1rem;
+            transition: background 0.3s;
+        }
+
+        .learn-more-btn:hover {
+            background: #0891b2;
+        }
+
+        /* Our Services */
+        .services {
+            padding: 6rem 5%;
+            background: white;
+            text-align: center;
+        }
+
+        .services h2 {
+            font-size: 2.5rem;
+            color: #1e3a8a;
+            margin-bottom: 1rem;
+        }
+
+        .services-subtitle {
+            color: #64748b;
+            margin-bottom: 3rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: linear-gradient(135deg, #e0f2fe, #dbeafe);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: left;
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: scale(1.05);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card h3 {
+            color: #1e3a8a;
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: #475569;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .read-more-btn {
+            background: #1e3a8a;
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 8px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .read-more-btn:hover {
+            background: #1e40af;
+        }
+
+        .explore-btn {
+            background: #06b6d4;
+            color: white;
+            padding: 1rem 3rem;
+            border-radius: 25px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 3rem;
+            font-size: 1.1rem;
+            transition: transform 0.3s;
+        }
+
+        .explore-btn:hover {
+            transform: scale(1.05);
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 6rem 5%;
+            background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+            text-align: center;
+        }
+
+        .contact-title {
+            color: #06b6d4;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact h2 {
+            font-size: 2rem;
+            color: #1e3a8a;
+            margin-bottom: 3rem;
+        }
+
+        .contact-content h3 {
+            font-size: 2.2rem;
+            color: #1e3a8a;
+            margin-bottom: 3rem;
+        }
+
+        .contact-subtitle {
+            color: #64748b;
+            margin-bottom: 2rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            transition: transform 0.3s;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.1);
+        }
+
+        .whatsapp {
+            background: #25D366;
+        }
+
+        .instagram {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+        }
+
+        /* FAQ Section */
+        .faq {
+            padding: 6rem 5%;
+            background: white;
+        }
+
+        .faq h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #1e3a8a;
+            margin-bottom: 3rem;
+        }
+
+        .faq-item {
+            background: #f8fafc;
+            margin-bottom: 1rem;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            font-weight: 600;
+            color: #1e3a8a;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-question:hover {
+            background: #e0f2fe;
+        }
+
+        /* Footer */
+        footer {
+            background: #1e3a8a;
+            color: white;
+            padding: 2rem 5%;
+            text-align: center;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">Inner Child.ed</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Our Services</a></li>
+            <li><a href="#Contact">Contact</a></li>
+            <li><a href="#faq">FAQ</a></li>
+        </ul>
+        <a href="#" class="login-btn">Login</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Inner Child Make Impact For Future Generation</h1>
+            <p>Kami hadir untuk memfasilitasi dan memberikan layanan pengembangan diri yang efektif bagi generasi muda Indonesia</p>
+        </div>
+        <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&h=400&fit=crop" alt="Students Learning">
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="section-title">About</div>
+        <h2>Improve Your Skill by Talking High-Quality</h2>
+        
+        <div class="about-grid">
+            <div class="about-card">
+                <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=400&h=300&fit=crop" alt="Classroom">
+                <button class="learn-more-btn">Learn More</button>
+            </div>
+            <div class="about-card">
+                <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=400&h=300&fit=crop" alt="Workshop">
+                <button class="learn-more-btn">Learn More</button>
+            </div>
+            <div class="about-card">
+                <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=400&h=300&fit=crop" alt="Training">
+                <button class="learn-more-btn">Learn More</button>
+            </div>
+            <div class="about-card">
+                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&h=300&fit=crop" alt="Discussion">
+                <button class="learn-more-btn">Learn More</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Services Section -->
+    <section id="services" class="services">
+        <div class="section-title">Our Class</div>
+        <h2>Kami hadir untuk memfasilitasi kebutuhan pengembangan diri</h2>
+        <p class="services-subtitle">Dengan berbagai program yang dirancang khusus untuk generasi muda</p>
+        
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">📚</div>
+                <h3>Product Management Basic - Kick Start Your PM Career</h3>
+                <p>Pelajari dasar-dasar product management dan mulai karir Anda sebagai product manager profesional.</p>
+                <button class="read-more-btn">Read More</button>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">💻</div>
+                <h3>BIZ Class (Basic Professional Communication)</h3>
+                <p>Tingkatkan kemampuan komunikasi profesional Anda untuk sukses di dunia bisnis.</p>
+                <button class="read-more-btn">Read More</button>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">✍️</div>
+                <h3>The Science of Goal Setting</h3>
+                <p>Pelajari metode ilmiah dalam menetapkan dan mencapai goal yang efektif dan terukur.</p>
+                <button class="read-more-btn">Read More</button>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">🎯</div>
+                <h3>The Science of Well-Being</h3>
+                <p>Eksplorasi ilmu kesejahteraan mental dan cara meningkatkan kualitas hidup Anda.</p>
+                <button class="read-more-btn">Read More</button>
+            </div>
+        </div>
+        
+        <button class="explore-btn">Explore More</button>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="contact-title">Contact Us</div>
+        <h2>Inner Child.ed</h2>
+        
+        <div class="contact-content">
+            <h3>Improve Your Skill by Talking High-Quality</h3>
+            <p class="contact-subtitle">Hubungi kami melalui social media berikut</p>
+            
+            <div class="social-links">
+                <a href="#" class="whatsapp">
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="white">
+                        <path d="M16 0C7.164 0 0 7.164 0 16c0 2.824.741 5.584 2.15 8.012L0 32l8.2-2.116A15.926 15.926 0 0016 32c8.836 0 16-7.164 16-16S24.836 0 16 0zm8.066 22.666c-.344.97-2.037 1.783-2.963 1.898-.668.082-1.537.123-2.477-.156-.586-.175-1.338-.408-2.297-.797-4.016-1.623-6.635-5.682-6.836-5.943-.2-.261-1.635-2.176-1.635-4.152s1.033-2.947 1.4-3.35c.366-.402.799-.502 1.067-.502.268 0 .537.004.77.014.247.011.579-.094.906.691.333.801 1.143 2.789 1.242 2.99.1.201.166.435.033.696-.133.262-.2.426-.4.656-.2.23-.42.514-.6.69-.2.195-.41.407-.176.799.234.392 1.041 1.718 2.234 2.781 1.533 1.367 2.825 1.793 3.225 1.994.4.201.633.168.867-.1.233-.268 1.002-1.17 1.27-1.572.267-.402.533-.335.9-.201.366.134 2.329 1.097 2.729 1.299.4.201.667.301.766.469.1.168.1.97-.244 1.941z"/>
+                    </svg>
+                </a>
+                <a href="#" class="instagram">
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="white">
+                        <path d="M16 2.881c4.275 0 4.781.019 6.462.094 1.563.069 2.406.331 2.969.55a4.952 4.952 0 011.837 1.194 4.952 4.952 0 011.194 1.837c.219.563.481 1.406.55 2.969.075 1.681.094 2.187.094 6.462s-.019 4.781-.094 6.462c-.069 1.563-.331 2.406-.55 2.969a4.952 4.952 0 01-1.194 1.837 4.952 4.952 0 01-1.837 1.194c-.563.219-1.406.481-2.969.55-1.681.075-2.187.094-6.462.094s-4.781-.019-6.462-.094c-1.563-.069-2.406-.331-2.969-.55a4.952 4.952 0 01-1.837-1.194 4.952 4.952 0 01-1.194-1.837c-.219-.563-.481-1.406-.55-2.969-.075-1.681-.094-2.187-.094-6.462s.019-4.781.094-6.462c.069-1.563.331-2.406.55-2.969a4.952 4.952 0 011.194-1.837A4.952 4.952 0 016.569 3.525c.563-.219 1.406-.481 2.969-.55 1.681-.075 2.187-.094 6.462-.094zM16 0c-4.344 0-4.887.019-6.594.094-1.7.075-2.869.35-3.881.744a7.845 7.845 0 00-2.838 1.85A7.845 7.845 0 00.838 5.525C.444 6.537.169 7.706.094 9.406.019 11.113 0 11.656 0 16s.019 4.887.094 6.594c.075 1.7.35 2.869.744 3.881a7.845 7.845 0 001.85 2.838 7.845 7.845 0 002.838 1.85c1.012.394 2.181.669 3.881.744 1.706.075 2.25.094 6.594.094s4.887-.019 6.594-.094c1.7-.075 2.869-.35 3.881-.744a7.845 7.845 0 002.838-1.85 7.845 7.845 0 001.85-2.838c.394-1.012.669-2.181.744-3.881.075-1.706.094-2.25.094-6.594s-.019-4.887-.094-6.594c-.075-1.7-.35-2.869-.744-3.881a7.845 7.845 0 00-1.85-2.838A7.845 7.845 0 0026.475.838C25.463.444 24.294.169 22.594.094 20.887.019 20.344 0 16 0zm0 7.787a8.213 8.213 0 100 16.426 8.213 8.213 0 000-16.426zm0 13.543a5.33 5.33 0 110-10.66 5.33 5.33 0 010 10.66zM26.464 7.457a1.919 1.919 0 11-3.838 0 1.919 1.919 0 013.838 0z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq">
+        <h2>Frequently Asked Questions</h2>
+        
+        <div class="faq-item">
+            <div class="faq-question">
+                Apakah kursus pengembangan online cocok untuk pemula? ⊕
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">
+                Berapa lama waktu yang dibutuhkan untuk menyelesaikan kursus pengembangan online? ⊕
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">
+                Apakah kursus pengembangan online gratis atau berbayar? ⊕
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">
+                Apakah saya perlu memiliki latar belakang teknis sebelum memulai kursus pengembangan online? ⊕
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>Copyright © 2024 InnerChild.ed</p>
+        <p>All Rights Reserved</p>
+    </footer>
+</body>
+</html>
